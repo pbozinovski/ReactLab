@@ -14,7 +14,7 @@ class StudentsList extends Component {
                         <th>Lastname</th>
                         <th>Index</th>
                         <th>Program</th>
-
+                        <th>Edit</th>
                     </tr>
 
                     {students}
@@ -28,16 +28,11 @@ class StudentsList extends Component {
         }
     getStudents = () => {
         return this.props.students.map((student, index) => {
-            return <StudentItem student={student} key={index} index={index}/>
+            return <StudentItem student={student} key={index} index={index} showEditForm={this.props.showEditForm}  saveForm={this.props.saveForm} delete={this.props.delete} />
         })
     };
     };
-// const StudentsList = (props) => {
-//
-//     return (
-//         <div> <h1>Hello, </h1></div>
-//     );
-// };
+
 
 
 export default StudentsList;

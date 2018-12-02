@@ -18,18 +18,20 @@ class App extends Component {
     }
 
     render() {
-        let style = {visibility: 'hidden'};
+
 
     return (
       <div className="m-3">
-          <StudentsList students={this.state.students}/>
+          <StudentsList students={this.state.students} delete={this.delete} showEditForm={this.showEditForm} saveForm={this.saveForm}/>
           <div>
-          <AddStudent onEdit={this.onEdit}/>
+          <AddStudent onAdd={this.onAdd}/>
+
           </div>
       </div>
     );
   }
-    onEdit = (student) => {
+
+    onAdd = (student) => {
 
         this.setState((state, props) => {
             return {
@@ -38,9 +40,29 @@ class App extends Component {
         });
     };
 
-    editItems = () => {
-      console.log("test");
+    delete = (index) => {
+        const students = Object.assign([], this.state.students);
+        students.splice(index, 1);
+        //console.log(index);
+        this.setState({students: students});
     };
+
+    showEditForm = (ind) => {
+        //const test = this.state.students.editing;
+        const students = Object.assign([], this.state.students);
+        students[ind].editing = true;
+        this.setState({students: students});
+        //console.log(ind);
+    };
+
+    saveForm = (ind) => {
+        //let val = this.refs.text1.value;
+        const students = Object.assign([], this.state.students);
+        students[ind].editing = false;
+        this.setState({students: students});
+       //console.log(this.refs.text1);
+    }
+
 
 }
 

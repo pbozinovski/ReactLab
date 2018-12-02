@@ -6,13 +6,14 @@ const AddStudent = (props) => {
         formSubmitEvent.preventDefault();
 
 
-            props.onEdit(
+            props.onAdd(
                 {
 
                     name: formSubmitEvent.target.name.value,
                     lastname: formSubmitEvent.target.lastname.value,
                     index: formSubmitEvent.target.index.value,
-                    direction: formSubmitEvent.target.direction.value
+                    direction: formSubmitEvent.target.direction.value,
+                    editing: false
                 }
             );
 
