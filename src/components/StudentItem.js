@@ -5,11 +5,11 @@ class StudentItem extends Component {
         return (
             <tr>
                 <td>{this.props.student.name}</td>
-                <td>{this.props.student.lastname}</td>
-                <td>{this.props.student.index}</td>
-                <td>{this.props.student.direction}</td>
+                <td>{this.props.student.lastName}</td>
+                <td>{this.props.student.ind}</td>
+                <td>{this.props.student.studyProgram.name}</td>
                 <td><button className="btn btn-primary" onClick={this.props.showEditForm.bind(this, this.props.index)}>Edit</button>
-                    <button className="btn btn-danger" onClick={this.props.delete.bind(this, this.props.index)}>Delete</button>
+                    <button className="btn btn-danger" onClick={this.props.delete.bind(this, this.props.student.id)}>Delete</button>
                 </td>
 
             </tr>

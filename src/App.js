@@ -5,6 +5,7 @@ import StudentsList from './components/StudentsList';
 import AddStudent from './components/AddStudent';
 
 import {listStudents} from "./repository/StudentRepository";
+import {addStudent, deleteStudent, getStudentsFromApi} from "./repository/studentAPI";
 
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            students: listStudents()
+            students: []
         };
     }
 
@@ -31,20 +32,42 @@ class App extends Component {
     );
   }
 
+  componentDidMount(){
+        this.loadData();
+  }
+
+  loadData = () =>{
+      getStudentsFromApi()
+          .then(response => response.json())
+          .then((data) => {
+              console.log('data: ', data)
+              this.setState({
+                  students: data
+              })
+          });
+
+  };
+
     onAdd = (student) => {
 
-        this.setState((state, props) => {
-            return {
-                students: [...state.students, student]
-            };
+        // this.setState((state, props) => {
+        //     return {
+        //         students: [...state.students, student]
+        //     };
+        // });
+        addStudent(student).then((response) =>{
+            this.loadData();
         });
     };
 
     delete = (index) => {
-        const students = Object.assign([], this.state.students);
-        students.splice(index, 1);
-        //console.log(index);
-        this.setState({students: students});
+        // const students = Object.assign([], this.state.students);
+        // students.splice(index, 1);
+        // //console.log(index);
+        // this.setState({students: students});
+        deleteStudent(index).then((response) => {
+            this.loadData()
+        });
     };
 
     showEditForm = (ind) => {

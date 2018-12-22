@@ -12,7 +12,8 @@ const AddStudent = (props) => {
                     name: formSubmitEvent.target.name.value,
                     lastname: formSubmitEvent.target.lastname.value,
                     index: formSubmitEvent.target.index.value,
-                    direction: formSubmitEvent.target.direction.value,
+                    studyProgramName: formSubmitEvent.target.studyProgramName.body,
+                    studyId: formSubmitEvent.target.studyProgramName.value,
                     editing: false
                 }
             );
@@ -44,11 +45,21 @@ const AddStudent = (props) => {
 
                 </div>
 
-                <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Program</label>
-                    <input name="direction" placeholder={"Enter the program..."} type={"text"}
-                           className="form-control"/>
+                {/*<div className="form-group">*/}
+                {/*<label htmlFor="exampleInputEmail1">Program</label>*/}
+                    {/*<input name="studyProgramName" placeholder={"Enter the program..."} type={"text"}*/}
+                           {/*className="form-control"/>*/}
 
+                {/*</div>*/}
+
+                <div className="form-group">
+                    <label htmlFor="sel1">Select program:</label>
+                    <select name="studyProgramName" className="form-control">
+                        <option value="1">ASI</option>
+                        <option value="2">PET</option>
+                        <option value="3">KNI</option>
+                        <option value="4">PIT</option>
+                    </select>
                 </div>
 
                 <div className="form-group">
